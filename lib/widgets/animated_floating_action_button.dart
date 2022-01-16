@@ -14,12 +14,13 @@ class AnimatedFloatingActionButton extends StatefulWidget {
   final String? tooltip;
   final Curve curve;
   final double spaceBetween;
+  final bool reverse;
 
   /// The [fabButtons] and [animatedIconData] arguments must not be null.
   /// The [durationAnimation], [colorStartAnimation], [colorEndAnimation],
   /// [curve] and [spaceBetween] default to the value given by the library
   /// but also the should not be null.
-  AnimatedFloatingActionButton({
+  const AnimatedFloatingActionButton({
     Key? key,
     required this.fabButtons,
     required this.animatedIconData,
@@ -30,6 +31,7 @@ class AnimatedFloatingActionButton extends StatefulWidget {
     this.curve = Curves.easeOut,
     this.spaceBetween = -5.0,
     this.tooltip = 'toggle',
+    this.reverse = false,
   })  : assert(
           durationAnimation > 150 && durationAnimation < 1250,
           'The duration of the animation should be '
@@ -151,7 +153,7 @@ class AnimatedFloatingActionButtonState
   }
 
   List<Widget> _buildFABs() {
-    List<Widget> processButtons = [];
+    final List<Widget> processButtons = [];
     for (int i = 0; i < widget.fabButtons.length; i++) {
       processButtons.add(
         Opacity(
@@ -169,7 +171,12 @@ class AnimatedFloatingActionButtonState
         ),
       );
     }
-    processButtons.add(_buildMainFAB());
+    
+    if (widget.reverse) {
+      processButtons.insert(0, _buildMainFAB());
+    } else {
+      processButtons.add(_buildMainFAB());
+    }
     return processButtons;
   }
 
