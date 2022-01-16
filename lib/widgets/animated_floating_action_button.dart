@@ -108,8 +108,8 @@ class AnimatedFloatingActionButtonState
     /// This Tween is to animate position of the current fab
     /// according to its position in the list.
     _translateButton = Tween<double>(
-      begin: _fabHeight,
-      end: widget.spaceBetween,
+      begin: widget.reverse ? widget.spaceBetween : _fabHeight,
+      end: widget.reverse ? _fabHeight : widget.spaceBetween,
     ).animate(
       CurvedAnimation(
         parent: _animationController,
@@ -171,7 +171,7 @@ class AnimatedFloatingActionButtonState
         ),
       );
     }
-    
+
     if (widget.reverse) {
       processButtons.insert(0, _buildMainFAB());
     } else {
