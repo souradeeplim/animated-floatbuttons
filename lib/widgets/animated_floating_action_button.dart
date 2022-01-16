@@ -166,8 +166,8 @@ class AnimatedFloatingActionButtonState
               ],
             ),
             translateValue: widget.reverse
-                ? _translateButton.value * (widget.fabButtons.length + i)
-                : _translateButton.value * (widget.fabButtons.length - i),
+                ? (_translateButton.value * widget.fabButtons.length)
+                : (_translateButton.value * (widget.fabButtons.length - i)),
           ),
         ),
       );
