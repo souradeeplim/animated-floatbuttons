@@ -113,11 +113,17 @@ class AnimatedFloatingActionButtonState
     ).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: Interval(
-          0.0,
-          0.75,
-          curve: widget.curve,
-        ),
+        curve: widget.reverse
+            ? Interval(
+                0.75,
+                0.0,
+                curve: widget.curve,
+              )
+            : Interval(
+                0.0,
+                0.75,
+                curve: widget.curve,
+              ),
       ),
     );
     super.initState();
