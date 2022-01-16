@@ -30,7 +30,7 @@ class AnimatedFloatingActionButton extends StatefulWidget {
     this.colorEndAnimation = Colors.red,
     this.curve = Curves.easeOut,
     this.spaceBetween = -5.0,
-    this.tooltip = 'toggle',
+    this.tooltip,
     this.reverse = false,
   })  : assert(
           durationAnimation > 150 && durationAnimation < 1250,
@@ -41,12 +41,12 @@ class AnimatedFloatingActionButton extends StatefulWidget {
           fabButtons.length > 1,
           'The number of FABs should be more than 1 FAB.',
         ),
-        assert(
+        /*assert(
           spaceBetween <= -5,
           'This is a space between the FABs when they are expanded, '
           'and the value should be lower than or '
           'equal to -5 to have a reasonable space between them.',
-        ),
+        ),*/
         super(key: key);
 
   @override
